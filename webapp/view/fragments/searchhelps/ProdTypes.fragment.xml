@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>SelectProductType}"
+		class="sapUiPopupWithPadding"
+		items="{ProdTypeModel>/results}"
+		search="_prodTypeValueHelpSearch"
+		confirm="_prodTypeValueHelpClose"
+		cancel="_prodTypeValueHelpClose">
+		<StandardListItem title="{ProdTypeModel>ProdTyp}" description="{ProdTypeModel>Desc1}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

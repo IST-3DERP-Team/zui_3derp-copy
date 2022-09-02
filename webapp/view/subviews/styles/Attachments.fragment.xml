@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" class="sapUiSizeCompact" xmlns:tnt="sap.tnt"
+    xmlns:c="zui3derp.control" xmlns:t="sap.ui.table">
+    <Panel expandable="false" expanded="true" width="100%" class="sapUiNoContentPadding sapUiSizeCompact">
+    
+        <Toolbar height="3rem" style="Clear">
+            <Label text=""/>
+            <ToolbarSpacer />
+            <Button text="{i18n>DeleteSelected}" tooltip="{i18n>Deleteselectedattachment}" press="onDeleteFile" visible="{= ${FilesEditModeModel>/editMode} === true ? true : false }"/>
+            <Button type="Ghost" icon="sap-icon://edit" text="{i18n>Edit}" tooltip="{i18n>Editattachments}" press="setFilesEditMode" visible="{= ${FilesEditModeModel>/editMode} === true ? false : true }"/>
+            <Button type="Ghost" icon="sap-icon://decline" text="{i18n>Cancel}" tooltip="{i18n>Canceledit}" press="cancelFilesEdit" visible="{= ${FilesEditModeModel>/editMode} === true ? true : false }"/>
+        </Toolbar>
+        
+        <!-- Attachments -->
+        <VBox id="FilesBox">
+            <UploadCollection id="UploadCollection" instantUpload="false"></UploadCollection>
+        </VBox>
+        
+    </Panel>
+</core:FragmentDefinition>

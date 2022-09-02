@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>SelectSeason}"
+		class="sapUiPopupWithPadding"
+		items="{SeasonsModel>/results}"
+        search="_seasonsGroupValueHelpSearch"
+		confirm="_seasonsGroupValueHelpClose"
+		cancel="_seasonsGroupValueHelpClose">
+		<StandardListItem title="{SeasonsModel>Seasoncd}" description="{SeasonsModel>Desc1}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,123 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs02/vocabularies/Org.OData.Aggregation.V1.xml">
+		<edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470971/Communication.xml?api=v2">
+		<edmx:Include Alias="vCard" Namespace="com.sap.vocabularies.Communication.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="CQP" Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm">
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZVI_3DERP_STYLES_FILTER_CDS.ZVI_3DERP_STYLES_FILTERType/SEASONCD">
+                <!-- <Annotation Term="Common.QuickInfo" String="Season"/> -->
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record Type="com.sap.vocabularies.Common.v1.ValueListType">
+						<PropertyValue Property="CollectionPath" String="ZVB_SEASON_SH"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterIn">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="SBU"/>
+									<PropertyValue Property="ValueListProperty" String="SBU"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="SEASONCD"/>
+									<PropertyValue Property="ValueListProperty" String="SEASONCD"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Description"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZVI_3DERP_STYLES_FILTER_CDS.ZVI_3DERP_STYLES_FILTERType/PRODTYP">
+                <!-- <Annotation Term="com.sap.vocabularies.Common.v1.QuickInfo" String="{@i18n&gt;SeasonFilter}"/> -->
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record Type="com.sap.vocabularies.Common.v1.ValueListType">
+						<PropertyValue Property="CollectionPath" String="ZVB_PRODTYP_SH"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterIn">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="SBU"/>
+									<PropertyValue Property="ValueListProperty" String="SBU"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="PRODTYP"/>
+									<PropertyValue Property="ValueListProperty" String="PRODTYP"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Description"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZVI_3DERP_STYLES_FILTER_CDS.ZVI_3DERP_STYLES_FILTERType/STYLECAT">
+                <!-- <Annotation Term="com.sap.vocabularies.Common.v1.QuickInfo" String="{@i18n&gt;SeasonFilter}"/> -->
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record Type="com.sap.vocabularies.Common.v1.ValueListType">
+						<PropertyValue Property="CollectionPath" String="ZVB_STYLECAT_SH"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterIn">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="SBU"/>
+									<PropertyValue Property="ValueListProperty" String="SBU"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="STYLECAT"/>
+									<PropertyValue Property="ValueListProperty" String="STYLECAT"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Description"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZVI_3DERP_STYLES_FILTER_CDS.ZVI_3DERP_STYLES_FILTERType/SOLDTOCUST">
+                <!-- <Annotation Term="com.sap.vocabularies.Common.v1.QuickInfo" String="{@i18n&gt;SeasonFilter}"/> -->
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record Type="com.sap.vocabularies.Common.v1.ValueListType">
+						<PropertyValue Property="CollectionPath" String="ZVB_SOLDTOCUST_SH"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterIn">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="CUSTGRP"/>
+									<PropertyValue Property="ValueListProperty" String="CUSTGRP"/>
+								</Record>
+                                <Record Type="com.sap.vocabularies.Common.v1.ValueListParameterIn">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="SALESGRP"/>
+									<PropertyValue Property="ValueListProperty" String="SALESGRP"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="SOLDTOCUST"/>
+									<PropertyValue Property="ValueListProperty" String="SOLDTOCUST"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Name"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

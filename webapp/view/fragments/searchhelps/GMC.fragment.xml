@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>SelectGMC}"
+		class="sapUiPopupWithPadding"
+		items="{GMCModel>/results}"
+		search="_GMCValueHelpSearch"
+		confirm="_GMCValueHelpClose"
+		cancel="_GMCValueHelpClose">
+		<StandardListItem title="{GMCModel>Gmc}" description="{GMCModel>Desc1}" info="{GMCModel>Mattyp}">
+            <customData>
+				<core:CustomData key="Baseuom" value="{GMCModel>Baseuom}"/>
+            </customData>
+        </StandardListItem>
+	</SelectDialog>
+</core:FragmentDefinition>

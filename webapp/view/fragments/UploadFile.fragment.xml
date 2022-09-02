@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified">
+	<Dialog title="{i18n>UploadNewAttachment}" contentWidth="60%">
+		<Panel>
+
+            <!-- Attachment Details -->
+            <f:Form editable="true" class="sapUiNoContentPadding">
+                <f:layout>
+                    <f:ResponsiveGridLayout columnsXL="12" columnsL="12" columnsM="12"/>
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer ariaLabelledBy="Grp3">
+                        <f:formElements>
+                            <f:FormElement label="{i18n>DescriptionEN}">
+                                <f:fields>
+                                    <Input id="FileDesc1" value=""/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>DescriptionCN}">
+                                <f:fields>
+                                    <Input id="FileDesc2" value=""/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>AttachmentRemarks}">
+                                <f:fields>
+                                    <Input id="FileRemarks" value=""/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+		</Panel>
+		<buttons>
+			<Button text="{i18n>Save}" press="onStartUploadFile"/>
+			<Button text="{i18n>Cancel}" press="onCancelUploadFile"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>SelectPurchasingGroup}"
+		class="sapUiPopupWithPadding"
+		items="{PurchGroupModel>/results}"
+		search="_purGroupValueHelpSearch"
+		confirm="_purGroupValueHelpClose"
+		cancel="_purGroupValueHelpClose">
+		<StandardListItem title="{PurchGroupModel>Purgrp}" description="{PurchGroupModel>Desc1}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

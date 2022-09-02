@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" class="sapUiSizeCompact" xmlns:tnt="sap.tnt"
+    xmlns:c="zui3derp.control" xmlns:t="sap.ui.table">
+
+    <Toolbar height="3rem" style="Clear">
+        <Label text="{i18n>BOMbyGMC}"/>
+        <Button icon="sap-icon://synchronize" press="onRefresh"/>
+        <ToolbarSpacer />
+        <Button text="{i18n>GetComponents}" tooltip="{i18n>Getstylecomponents}" press="onGetComponent" visible="{BOMbyGMCEditModeModel>/editMode}"/>
+        <Button text="{i18n>RMC}" tooltip="{i18n>RunRMC}" press="onRMC" visible="{BOMbyGMCEditModeModel>/editMode}"/>
+        <Button icon="sap-icon://save" text="{i18n>Save}" tooltip="{i18n>SaveBOMitems}" press="onSaveBOMbyGMC" visible="{BOMbyGMCEditModeModel>/editMode}"/>
+        <Button icon="sap-icon://add" tooltip="{i18n>Addnewline}" press="addLineBOM" visible="{BOMbyGMCEditModeModel>/editMode}">
+            <customData>
+                <core:CustomData key="TableName" value="bomGMCTable"/>
+            </customData>
+        </Button>
+        <Button icon="sap-icon://delete" tooltip="{i18n>DeleteselectedBOMitems}" press="onDeleteBOMItems" visible="{BOMbyGMCEditModeModel>/editMode}"/>
+        <Button type="Ghost" icon="sap-icon://edit" text="{i18n>Edit}" tooltip="{i18n>EditBOMitems}" press="setBOMbyGMCEditMode" visible="{= ${BOMbyGMCEditModeModel>/editMode} === true ? false : true }"/>
+        <Button type="Ghost" icon="sap-icon://decline" text="{i18n>Cancel}" tooltip="{i18n>Canceledit}" press="cancelBOMbyGMCEdit" visible="{= ${BOMbyGMCEditModeModel>/editMode} === true ? true : false }"/>
+        <Button icon="sap-icon://excel-attachment" tooltip="{i18n>Downloadspreadsheet}" press="onExport">
+            <customData>
+            <core:CustomData key="TableName" value="bomGMCTable"/>
+            </customData>
+            <layoutData>
+                <ToolbarLayoutData shrinkable="true"/>
+            </layoutData>
+        </Button>
+    </Toolbar>
+
+    <MessageStrip id="BOMbyGMCMessageStrip" text="" showIcon="true" showCloseButton="true" class="sapUiMediumMarginBottom" type="Error" visible="false"/>
+
+    <!-- BOM by GMC Table -->
+    <!-- <c:DynamicTreeTable id="bomGMCTable" class="sapUiSizeCompact" showColumnVisibilityMenu="true" rows="{path:'DataModel>/results', parameters: {arrayNames:['BOMSTYLE']}}"
+        selectionMode="{= ${BOMbyGMCEditModeModel>/editMode} === true ? 'MultiToggle' : 'None' }">
+    </c:DynamicTreeTable> -->
+    <ScrollContainer height="400px" vertical="true">
+        <c:DynamicTable id="bomGMCTable" class="sapUiSizeCompact" rows="{path:'DataModel>/results'}" visibleRowCountMode="Fixed"
+            selectionMode="{= ${BOMbyGMCEditModeModel>/editMode} === true ? 'MultiToggle' : 'None' }" width="300%">
+        </c:DynamicTable>
+    </ScrollContainer>
+</core:FragmentDefinition>    

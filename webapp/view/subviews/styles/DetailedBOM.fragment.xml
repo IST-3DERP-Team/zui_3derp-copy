@@ -1,0 +1,150 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" class="sapUiSizeCompact" xmlns:tnt="sap.tnt"
+    xmlns:c="zui3derp.control" xmlns:t="sap.ui.table">
+
+    <Toolbar height="3rem" style="Clear">
+        <Label text="{i18n>DetailedBOM}"/>
+        <ToolbarSpacer />
+        <Button icon="sap-icon://excel-attachment" press="onExport"  tooltip="{i18n>Downloadspreadsheet}">
+            <customData>
+                <core:CustomData key="TableName" value="bomDetailedTable"/>
+            </customData>
+        </Button>
+    </Toolbar>
+
+    <!-- Detailed BOM Tree Table -->
+    <t:TreeTable id="bomDetailedTable" class="sapUiSizeCompact" showColumnVisibilityMenu="true" rows="{path:'DataModel>/results', parameters: {arrayNames:['items']}}"
+        selectionMode="None">
+        <t:Column width="10rem" filterType="" filterProperty="Bomitem" sortProperty="Bomitem">
+            <Label text="{i18n>BOMITEM}"/>
+            <t:template>
+                <Text text="{DataModel>Bomitem}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Bomitmtyp" sortProperty="Bomitmtyp">
+            <Label text="{i18n>BOMITMTYP}"/>
+            <t:template>
+                <Text text="{DataModel>Bomitmtyp}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Bomstyle" sortProperty="Bomstyle">
+            <Label text="{i18n>STYLENO}"/>
+            <t:template>
+                <Text text="{DataModel>Bomstyle}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Bomstylver" sortProperty="Bomstylver">
+            <Label text="{i18n>BOMSTYLVER}"/>
+            <t:template>
+                <Text text="{DataModel>Bomstylver}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Partcd" sortProperty="Partcd">
+            <Label text="{i18n>PARTCD}"/>
+            <t:template>
+                <Text text="{DataModel>Partcd}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Partdesc" sortProperty="Partdesc">
+            <Label text="{i18n>PARTDESC}"/>
+            <t:template>
+                <Text text="{DataModel>Partdesc}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Partcnt" sortProperty="Partcnt">
+            <Label text="{i18n>PARTCNT}"/>
+            <t:template>
+                <Text text="{DataModel>Partcnt}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Usgcls" sortProperty="Usgcls">
+            <Label text="{i18n>USGCLS}"/>
+            <t:template>
+                <Text text="{DataModel>Usgcls}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Custstyle" sortProperty="Custstyle">
+            <Label text="{i18n>CUSTSTYLE}"/>
+            <t:template>
+                <Text text="{DataModel>Custstyle}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Processcd" sortProperty="Processcd">
+            <Label text="{i18n>PROCESSCD}"/>
+            <t:template>
+                <Text text="{DataModel>Processcd}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Color" sortProperty="Color">
+            <Label text="{i18n>COLOR}"/>
+            <t:template>
+                <Text text="{DataModel>Color}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Sizes" sortProperty="Sizes">
+            <Label text="{i18n>SIZES}"/>
+            <t:template>
+                <Text text="{DataModel>Sizes}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Dest" sortProperty="Dest">
+            <Label text="{i18n>DEST}"/>
+            <t:template>
+                <Text text="{DataModel>Dest}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Mattyp" sortProperty="Mattyp">
+            <Label text="{i18n>MATTYP}"/>
+            <t:template>
+                <Text text="{DataModel>Mattyp}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Gmc" sortProperty="Gmc">
+            <Label text="{i18n>GMC}"/>
+            <t:template>
+                <Text text="{DataModel>Gmc}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Matno" sortProperty="Matno">
+            <Label text="{i18n>MATNO}"/>
+            <t:template>
+                <Text text="{DataModel>Matno}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Consump" sortProperty="Consump">
+            <Label text="{i18n>MATCONSPER}"/>
+            <t:template>
+                <Text text="{DataModel>Matconsper}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Per" sortProperty="Per">
+            <Label text="{i18n>PER}"/>
+            <t:template>
+                <Text text="{DataModel>Per}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Entryuom" sortProperty="Entryuom">
+            <Label text="{i18n>UOM}"/>
+            <t:template>
+                <Text text="{DataModel>Entryuom}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Wastage" sortProperty="Wastage">
+            <Label text="{i18n>WASTAGE}"/>
+            <t:template>
+                <Text text="{DataModel>Wastage}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Comconsump" sortProperty="Comconsump">
+            <Label text="{i18n>COMCONSUMP}"/>
+            <t:template>
+                <Text text="{DataModel>Comconsump}"/>
+            </t:template>
+        </t:Column>
+        <t:Column width="7rem" filterType="" filterProperty="Consump" sortProperty="Consump">
+            <Label text="{i18n>CONSUMP}"/>
+            <t:template>
+                <Text text="{DataModel>Consump}"/>
+            </t:template>
+        </t:Column>
+    </t:TreeTable>
+</core:FragmentDefinition>            

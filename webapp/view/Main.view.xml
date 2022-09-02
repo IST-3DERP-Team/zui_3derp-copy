@@ -1,0 +1,72 @@
+<mvc:View controllerName="zui3derp.controller.Main" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.f" xmlns:card="sap.f.cards" xmlns:tnt="sap.tnt" xmlns:micro="sap.suite.ui.microchart">
+    <Page showHeader="false">
+        <Bar>
+            <contentLeft>
+                <Label text="Welcome" class="sapUiTinyMarginBegin"/>
+            </contentLeft>
+        </Bar>
+
+        <!-- KPI -->
+        <HBox class="sapUiSmallMargin">
+            <f:Card class="sapUiTinyMargin"
+                width="300px">
+                <f:header>
+                    <card:Header title="{i18n>style}" subtitle="VER, SPRING 2021"/>
+                </f:header>
+                <f:content>
+                    <VBox>
+                        <CustomListItem>
+                            <HBox class="sapUiSmallMargin" alignItems="Center" justifyContent="SpaceBetween">
+                                <Title level="H3" text="{i18n>forecast}" />
+                                <tnt:InfoLabel text="{model>forecast}" renderMode="Loose" colorScheme="1" displayOnly= "true" id="forecastNumber"/>
+                            </HBox>
+                        </CustomListItem>
+                        <CustomListItem>
+                            <HBox class="sapUiSmallMargin" alignItems="Center" justifyContent="SpaceBetween">
+                                <Title level="H3" text="{i18n>order}" />
+                                <tnt:InfoLabel text="{model>order}" colorScheme="6" displayOnly= "true" id="orderNumber"/>
+                            </HBox>
+                        </CustomListItem>
+                        <CustomListItem>
+                            <HBox class="sapUiSmallMargin" alignItems="Center" justifyContent="SpaceBetween">
+                                <Title level="H3" text="{i18n>shipped}" />
+                                <tnt:InfoLabel text="{model>shipped}" colorScheme="8" displayOnly= "true" id="shippedNumber"/>
+                            </HBox>
+                        </CustomListItem>
+                    </VBox>
+                </f:content>
+            </f:Card>
+            <GenericTile class="sapUiTinyMargin tileLayout" header="Feed Tile that shows updates of the last feeds given to a specific topic:"
+                frameType="TwoByOne" press="press">
+                <TileContent footer="As of June 22, 2022">
+                    <FeedContent contentText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." value="352" />
+                </TileContent>
+            </GenericTile>
+            <GenericTile class="sapUiTinyMargin tileLayout" press="press" header="Some KPI" subheader="RadialMicroChart" frameType="OneByOne">
+                <tileContent>
+                    <TileContent footer="Some indicator">
+                        <content>
+                            <micro:RadialMicroChart size="Responsive" percentage="75.9" alignContent="Right" valueColor="Neutral"/>
+                        </content>
+                    </TileContent>
+                </tileContent>
+            </GenericTile>
+        </HBox>
+
+        <!-- Quick Access Tiles -->
+        <Panel>
+            <headerToolbar>
+                <Toolbar height="2rem">
+                    <Label text="Quick Access"/>
+                </Toolbar>
+            </headerToolbar>
+            <GenericTile class="sapUiTinyMarginBegin" header="{i18n>ManageStyles}" press="goToStyles">
+                <TileContent>
+                    <ImageContent src="sap-icon://puzzle" />
+                </TileContent>
+            </GenericTile>
+        </Panel>
+        
+    </Page>
+</mvc:View>

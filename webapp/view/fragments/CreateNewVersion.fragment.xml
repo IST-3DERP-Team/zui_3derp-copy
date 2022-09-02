@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<Dialog title="{i18n>Createnewversion}" xmlns:c="zui3derp.control" xmlns:t="sap.ui.table" xmlns:tnt="sap.tnt">
+		<Panel>
+
+            <!-- New Version Details -->
+			<f:Form editable="true" class="sapUiNoContentPadding">
+                <f:layout>
+                    <f:ResponsiveGridLayout columnsXL="12" columnsL="12" columnsM="12"/>
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer ariaLabelledBy="Grp3">
+                        <f:formElements>
+                            <f:FormElement label="{i18n>DescriptionEN}">
+                                <f:fields>
+                                    <Input id="newVersionDesc1"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>DescriptionCN}">
+                                <f:fields>
+                                    <Input id="newVersionDesc2"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement>
+                                <f:fields>
+                                    <CheckBox id="newVersionCurrent" text="{i18n>SetCurrent}" selected="true" />
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+		</Panel>
+		<buttons>
+			<Button text="Save" press="onSaveNewVersion"/>
+			<Button text="Cancel" press="onCloseDialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,76 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" class="sapUiSizeCompact" xmlns:tnt="sap.tnt"
+    xmlns:c="zui3derp.control" xmlns:t="sap.ui.table">
+    <Panel expandable="false" expanded="true" width="100%" class="sapUiNoContentPadding sapUiSizeCompact">
+    
+        <headerToolbar>
+            <Toolbar height="3rem" style="Clear">
+                <Title text="{i18n>Versions}" />
+            </Toolbar>
+        </headerToolbar>
+
+        <Toolbar height="3rem" style="Clear">
+            <ToolbarSpacer />
+            <Button type="Ghost" icon="sap-icon://save" text="{i18n>Save}" tooltip="{i18n>Saveversions}" press="onSaveVersions" visible="{VersionEditModeModel>/editMode}"/>
+            <Button type="Ghost" icon="sap-icon://add-document" text="{i18n>NewVersion}" tooltip="{i18n>Addnewversion}" press="onCreateNewVersion" visible="{VersionEditModeModel>/editMode}"/>                                    
+            <Button type="Ghost" icon="sap-icon://delete" visible="{VersionEditModeModel>/editMode}" tooltip="{i18n>Deleteselectedversions}" press="onDeleteVersion"/>
+            <Button type="Ghost" icon="sap-icon://edit" text="{i18n>Edit}" tooltip="{i18n>Editversions}" press="setVersionEditMode" visible="{= ${VersionEditModeModel>/editMode} === true ? false : true }"/>
+            <Button type="Ghost" icon="sap-icon://decline" text="{i18n>Cancel}" tooltip="{i18n>Canceledit}" press="cancelVersionEdit" visible="{= ${VersionEditModeModel>/editMode} === true ? true : false }"/>
+        </Toolbar>
+
+        <MessageStrip id="VersionsMessageStrip" text="" showIcon="true" showCloseButton="true" class="sapUiMediumMarginBottom" type="Error" visible="false"/>
+
+        <!-- Versions Table -->
+        <ScrollContainer height="400px" vertical="true">
+            <c:DynamicTable id="versionsTable" rows="{DataModel>/results}" enableColumnReordering="false" 
+                selectionMode="{= ${VersionEditModeModel>/editMode} === true ? 'MultiToggle' : 'None' }" visibleRowCountMode="Fixed" class="sapUiSizeCompact">
+                <c:columns>
+                    <t:Column width="5rem" filterType="" filterProperty="Verno" sortProperty="Verno">
+                        <Label text="{i18n>Manage}"/>
+                        <t:template>
+                            <Button icon="sap-icon://detail-view" press="onSelectVersion">
+                            <customData>
+                                <core:CustomData  key="VerNo" value="{DataModel>Verno}"/>
+                            </customData>
+                            </Button>
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="5rem" filterType="" filterProperty="Verno" sortProperty="Verno" hAlign="End">
+                        <Label text="{i18n>Version}"/>
+                        <t:template>
+                            <Text text="{DataModel>Verno}"/>
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="6rem" hAlign="Center" sortProperty="Currentver">
+                        <Label text="{i18n>VersionStatus}" />
+                        <t:template>
+                            <tnt:InfoLabel id="il8" text="{= ${DataModel>Currentver} === true ? 'Current' : ' ' }" colorScheme="{= ${DataModel>Currentver} === true ? 8 : 7 }" displayOnly= "true"
+                                visible="{DataModel>Currentver}"/>
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="8rem" filterType="" filterProperty="Verno" sortProperty="Verno"  visible="{VersionEditModeModel>/editMode}">
+                        <Label text=""/>
+                        <t:template>
+                            <Button text="{i18n>SetCurrent}" icon="sap-icon://detail-view" press="setVersionCurrent" visible="{= ${DataModel>Currentver} === true ? false : true }">
+                                <customData>
+                                    <core:CustomData  key="VerNo" value="{DataModel>Verno}"/>
+                                </customData>
+                            </Button>
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="15rem" filterProperty="Desc1" sortProperty="Desc1">
+                        <Label text="{i18n>Description}"/>
+                        <t:template>
+                            <Input value="{DataModel>Desc1}" editable="{VersionEditModeModel>/editMode}" change="onVersionChange" liveChange="onVersionChange"/>
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="15rem" filterProperty="Desc2" sortProperty="Desc2">
+                        <Label text="{i18n>Description}"/>
+                        <t:template>
+                            <Input value="{DataModel>Desc2}" editable="{VersionEditModeModel>/editMode}" change="onVersionChange" liveChange="onVersionChange"/>
+                        </t:template>
+                    </t:Column>
+                </c:columns>
+            </c:DynamicTable>
+        </ScrollContainer>
+    </Panel>
+</core:FragmentDefinition>    

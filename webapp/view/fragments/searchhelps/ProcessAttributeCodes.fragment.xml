@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>SelectAttributeCode}"
+		class="sapUiPopupWithPadding"
+		items="{ProcessAttribCodeModel>/results}"
+		search="_processAttrCodesValueHelpSearch"
+		confirm="_processAttrCodesValueHelpClose"
+		cancel="_processAttrCodesValueHelpClose">
+		<StandardListItem title="{ProcessAttribCodeModel>Attribcd}" description="{ProcessAttribCodeModel>Desc2}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

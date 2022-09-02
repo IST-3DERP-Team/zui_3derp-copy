@@ -1,0 +1,109 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<Dialog title="{i18n>CopyStyle} {CopyModel>/STYLENO}" xmlns:c="zui3derp.control" xmlns:t="sap.ui.table" xmlns:tnt="sap.tnt" contentWidth="75%">
+		<Panel height="500px">
+
+            <!-- New Style Details -->
+			<f:Form id="StyleHeaderForm1" editable="true" class="sapUiNoContentPadding">
+                <f:layout>
+                    <f:ResponsiveGridLayout columnsXL="12" columnsL="12" columnsM="12"/>
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer ariaLabelledBy="Grp1">
+                        <f:formElements>
+                            <f:FormElement label="{i18n>SourceStyleCode}">
+                                <f:fields>
+                                    <Text text="{CopyModel>/STYLECD}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>SourceSeason}">
+                                <f:fields>
+                                    <Text text="{CopyModel>/SEASONCD}"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                        <f:layoutData>
+                            <l:GridData span="XL5 L5 M5 S5" />
+                        </f:layoutData>
+                    </f:FormContainer>
+                    
+                    <f:FormContainer ariaLabelledBy="Grp3">
+                        <f:formElements>
+                            <f:FormElement label="{i18n>NewStyleCode}">
+                                <f:fields>
+                                    <Input id="newStyleCode"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>NewSeason}">
+                                <f:fields>
+                                    <Input id="SEASONCD2" type="Text" showSuggestion="true" showValueHelp="true" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required"
+                                        valueHelpRequest="onSeasonsValueHelp" suggestionItems="{SeasonsModel>/results}" value="{headerData>/Seasoncd}"
+                                        change="onHeaderChange" liveChange="onHeaderChange">
+                                        <suggestionItems>
+                                            <core:ListItem text="{SeasonsModel>Seasoncd}" additionalText="{SeasonsModel>Desc1}"/>
+                                        </suggestionItems>
+                                    </Input>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                        <f:layoutData>
+                            <l:GridData span="XL5 L5 M5 S5" />
+                        </f:layoutData>
+                    </f:FormContainer>
+                
+                    <f:FormContainer ariaLabelledBy="Grp2">
+                        <f:formElements>
+                            <f:FormElement>
+                                <f:fields>
+                                    <CheckBox id="ColorCB" text="{i18n>Color}" selected="true" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement>
+                                <f:fields>
+                                    <CheckBox id="bomCB" text="{i18n>BOM}" selected="true" />
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                        <f:layoutData>
+                            <l:GridData span="XL2 L2 M2 S2" />
+                        </f:layoutData>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+
+            <!-- Versions Table -->
+            <t:Table id="versionsTableMain" rows="{VersionsDataModel>/results}" class="sapUiSizeCompact">
+                <t:columns>
+                    <t:Column width="5rem" filterType="" filterProperty="Verno" sortProperty="Verno">
+                        <Label text="{i18n>Version}"/>
+                        <t:template>
+                            <Text text="{VersionsDataModel>Verno}" textAlign="End"/>
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="6rem" hAlign="Center" sortProperty="Currentver">
+                        <Label text="{i18n>VerStatus}" />
+                        <t:template>
+                            <tnt:InfoLabel id="il8" text="{= ${VersionsDataModel>Currentver} === true ? 'Current' : ' ' }" colorScheme="{= ${VersionsDataModel>Currentver} === true ? 8 : 7 }" displayOnly= "true"
+                                visible="{VersionsDataModel>Currentver}"/>
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="15rem" filterProperty="Desc1" sortProperty="Desc1">
+                        <Label text="{i18n>Description}" />
+                        <t:template>
+                            <Text text="{VersionsDataModel>Desc1}"/>
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="15rem" filterProperty="Desc2" sortProperty="Desc2">
+                        <Label text="{i18n>Description}" />
+                        <t:template>
+                            <Text text="{VersionsDataModel>Desc2}"/>
+                        </t:template>
+                    </t:Column>
+                </t:columns>
+            </t:Table>
+		</Panel>
+		<buttons>
+			<Button text="{i18n>Save}" press="onSaveCopyStyle"/>
+			<Button text="{i18n>Cancel}" press="onCloseDialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

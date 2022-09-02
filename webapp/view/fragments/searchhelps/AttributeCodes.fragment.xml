@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>SelectAttributeCode}"
+		class="sapUiPopupWithPadding"
+		items="{AttribCdModel>/results}"
+		search="_attrCodesValueHelpSearch"
+		confirm="_attrCodesValueHelpClose"
+		cancel="_attrCodesValueHelpClose">
+		<StandardListItem title="{AttribCdModel>Attribcd}" description="{AttribCdModel>Desc1}">
+            <customData>
+				<core:CustomData key="Uom" value="{AttribCdModel>Valunit}"/>
+            </customData>
+        </StandardListItem>
+	</SelectDialog>
+</core:FragmentDefinition>

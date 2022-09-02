@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>SelectCustomerGroup}"
+		class="sapUiPopupWithPadding"
+		items="{CustGroupModel>/results}"
+		search="_custGroupValueHelpSearch"
+		confirm="_custGroupValueHelpClose"
+		cancel="_custGroupValueHelpClose">
+		<StandardListItem title="{CustGroupModel>CustGrp}" description="{CustGroupModel>Desc1}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog>
+		<Panel>
+			<Text text="{i18n>ConfirmDeleteVerAttr}"/>
+		</Panel>
+		<buttons>
+			<Button text="{i18n>Yes}" press="onConfirmDeleteVersionAttr"/>
+			<Button text="{i18n>Cancel}" press="onCloseDialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

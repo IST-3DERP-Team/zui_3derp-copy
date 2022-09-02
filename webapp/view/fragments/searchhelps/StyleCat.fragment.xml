@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>SelectStyleCategory}"
+		class="sapUiPopupWithPadding"
+		items="{StyleCatModel>/results}"
+		search="_styleCatValueHelpSearch"
+		confirm="_styleCatValueHelpClose"
+		cancel="_styleCatValueHelpClose">
+		<StandardListItem title="{StyleCatModel>Stylcat}" description="{StyleCatModel>Desc1}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

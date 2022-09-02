@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>SelectPurchasingPlant}"
+		class="sapUiPopupWithPadding"
+		items="{PurPlantModel>/results}"
+		search="_purPlantValueHelpSearch"
+		confirm="_purPlantValueHelpClose"
+		cancel="_purPlantValueHelpClose">
+		<StandardListItem title="{PurPlantModel>Plant}" description="{PurPlantModel>Desc1}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

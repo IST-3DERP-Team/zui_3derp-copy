@@ -1,0 +1,62 @@
+<mvc:View controllerName="zui3derp.controller.AssignMaterial" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:u="sap.uxap" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" class="sapUiSizeCompact" xmlns:tnt="sap.tnt"
+    xmlns:c="zui3derp.control" xmlns:t="sap.ui.table">
+    <Page showHeader="false" title="Assign Materials" showNavButton="true" navButtonPress="onNavBack">
+        <Panel>
+
+            <!-- Toolbar -->
+            <Toolbar height="3rem" style="Clear">
+                <Label text="Assign Material No."/>
+                <ToolbarSpacer />
+                <Button text="Assign Automatic" tooltip="Automatically assign material nos." press="onAssignAutomatic"/>
+                <Button text="Create Material" tooltip="Create material for selected items" press="onCreateMaterial"/>
+                <Button type="Ghost" icon="sap-icon://save" text="Save" tooltip="Save material list" press="onSaveMaterialList"/>
+            </Toolbar>
+
+            <MessageStrip id="AssignMaterialMessageStrip" text="" showIcon="true" showCloseButton="true" class="sapUiMediumMarginBottom" type="Error" visible="false"/>
+
+            <!-- Material List Table -->
+            <ScrollContainer height="400px" vertical="true">
+                <c:DynamicTable id="materialListTable" rows="{DataModel>/results}" class="sapUiSizeCompact" showColumnVisibilityMenu="true" height="100%"
+                    visibleRowCountMode="Fixed" width="300%">
+                    <t:Column width="8rem" filterType="" filterProperty="Attribtyp" sortProperty="Attribtyp">
+                        <Label text="GMC"/>
+                        <t:template>
+                            <Text text="{DataModel>Gmc}"/>
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="30rem" filterType="" filterProperty="Attribtyp" sortProperty="Attribtyp">
+                        <Label text="GMC Desc"/>
+                        <t:template>
+                            <Text text="{DataModel>Gmcdesc}"/>
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="30rem" filterType="" filterProperty="Attribtyp" sortProperty="Attribtyp">
+                        <Label text="Additional Description"/>
+                        <t:template>
+                            <Text text="{DataModel>Matdesc1}"/>
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="5rem" filterType="" filterProperty="Attribtyp" sortProperty="Attribtyp">
+                        <Label text="UOM"/>
+                        <t:template>
+                            <Text text="{DataModel>Entryuom}"/>
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="18rem" filterType="" filterProperty="Attribtyp" sortProperty="Attribtyp">
+                        <Label text="Material No."/>
+                        <t:template>
+                            <Input id="productInput" type="Text" placeholder="Select Material ..." showSuggestion="true" showValueHelp="true"
+                                valueHelpRequest="onMaterialValueHelp" suggestionItems="{MaterialsModel>/results}" value="{DataModel>Matno}" 
+                                change="onMaterialListChange" liveChange="onMaterialListChange">
+                                <suggestionItems>
+                                    <core:Item text="{MaterialsModel>MatNo}" />
+                                </suggestionItems>
+                            </Input>
+                        </t:template>
+                    </t:Column>
+                </c:DynamicTable>
+            </ScrollContainer>
+        </Panel>
+    </Page>
+</mvc:View>

@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>SelectStyle}"
+		class="sapUiPopupWithPadding"
+		items="{StylesModel>/results}"
+		search="_styleValueHelpSearch"
+		confirm="_styleValueHelpClose"
+		cancel="_styleValueHelpClose">
+		<StandardListItem title="{StylesModel>Desc1}" description="{StylesModel>Styleno}" 
+            info="Version {StylesModel>Verno}" 
+            infoState="{= ${StylesModel>Currentver} === true ? 'Success' : 'Information' }">
+            <customData>
+                <core:CustomData key="Verno" value="{StylesModel>Verno}"/>
+            </customData>
+        </StandardListItem>
+	</SelectDialog>
+</core:FragmentDefinition>

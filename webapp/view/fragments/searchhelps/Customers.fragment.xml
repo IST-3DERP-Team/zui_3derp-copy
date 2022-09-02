@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>SelectCustomer}"
+		class="sapUiPopupWithPadding"
+		items="{CustomersModel>/results}"
+		search="_customersValueHelpSearch"
+		confirm="_customersValueHelpClose"
+		cancel="_customersValueHelpClose">
+		<StandardListItem title="{CustomersModel>Custno}" description="{CustomersModel>Desc1}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

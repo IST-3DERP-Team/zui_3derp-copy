@@ -1,0 +1,32 @@
+<mvc:View xmlns:layout="sap.ui.layout" controllerName="zui3derp.controller.UploadStyle" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 
+    xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:c="zui3derp.control" xmlns:l="sap.ui.layout">
+    <Page showHeader="false">
+        <content>
+
+            <Panel>
+                <l:VerticalLayout class="sapUiContentPadding" width="100%">
+                    <l:content>
+                        <Label text="Map ID" labelFor="MapIdCB"/>
+                        <ComboBox id="MapIdCB" items="{path: 'MapIdData>/results'}" change="onSelectMapId" selectionChange="onSelectMapId" tooltip="Select MAP ID">
+                            <core:Item key="{MapIdData>Id}" text="{MapIdData>Id}"/>
+                        </ComboBox>
+                    </l:content>
+                </l:VerticalLayout>
+                <u:FileUploader id="FileUploaderId" class="sapUiSmallMarginBegin sapUiSmallMarginEnd" sameFilenameAllowed="true" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx"
+                    icon="sap-icon://upload" iconFirst="true" style="Emphasized" tooltip="Select upload file" change="onUpload"/>
+            </Panel>
+
+            <Toolbar height="3rem" style="Clear">
+                <ToolbarSpacer />
+                <Button id="SaveButton" class="sapUiSmallMarginEnd" icon="sap-icon://save" text="Save" tooltip="Save imported data" press="onSaveUploadStyle"/>
+            </Toolbar>
+
+            <MessageStrip id="UploadMessageStrip" text="" showIcon="true" showCloseButton="true" class="sapUiMediumMarginBottom" type="Error" visible="false"/>
+
+            <c:DynamicTable id="UploadTable" class="sapUiSizeCompact sapUiSmallMargin" selectionMode="None" 
+                showColumnVisibilityMenu="true" rows="{path:'DataModel>/results'}">
+            </c:DynamicTable>
+            
+        </content>
+    </Page>
+</mvc:View>

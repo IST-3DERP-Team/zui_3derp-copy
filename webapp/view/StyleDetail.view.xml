@@ -1,0 +1,62 @@
+<mvc:View controllerName="zui3derp.controller.StyleDetail" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:u="sap.uxap"
+    xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" class="sapUiSizeCompact" xmlns:tnt="sap.tnt"
+    xmlns:c="zui3derp.control" xmlns:t="sap.ui.table" >
+    <Page showHeader="false" title="Manage Style" showNavButton="true" navButtonPress="onNavBack">
+
+        <!-- OBJECT HEADER -->
+        <ObjectHeader id="objectHeader" responsive="true" fullScreenOptimized="true" intro="{i18n>CurrentVersion}: {headerData>/Verno}" backgroundDesign="Solid" icon="sap-icon://blank-tag-2"
+		        title="{headerData>/Stylecd} ({headerData>/Styleno})" number="{headerData>/Statuscd}" numberUnit="{i18n>Status}" numberState="{= ${headerData>/Statuscd} === 'CMP' ? 'Success' : ${headerData>/Statuscd} === 'CRT' ? 'Error' : 'Warning'}">
+            <attributes>
+                <ObjectAttribute title="{i18n>CREATEDBY}" text="{headerData>/Createdby}"/>
+                <ObjectAttribute title="{i18n>CREATEDDT}" text="{headerData>/Createddt}"/>
+                <ObjectAttribute title="{i18n>UPDATEDBY}" text="{headerData>/Updatedby}"/>
+                <ObjectAttribute title="{i18n>UPDATEDDT}" text="{headerData>/Updateddt}"/>
+            </attributes>
+        </ObjectHeader>
+        
+        <!-- HEADER -->
+        <core:Fragment fragmentName="zui3derp.view.subviews.styles.Header" type="XML"/>
+         
+        <!-- DETAILS -->
+        <Panel id="detailPanel" expandable="true" expanded="false" width="auto" class="sapUiSizeCompact">
+            <headerToolbar>
+                <Toolbar height="3rem" style="Clear">
+                    <Title text="{i18n>Detail}" />
+                </Toolbar>
+            </headerToolbar>
+            <IconTabBar tabDensityMode="Compact" expandable="false" class="sapUiNoContentPadding">
+                <items>
+                    <IconTabFilter icon="sap-icon://hint" text="{i18n>Attributes}" tooltip="{i18n>Styleattributes}">
+
+                        <!-- GENERAL ATTRIBUTES -->
+                        <core:Fragment fragmentName="zui3derp.view.subviews.styles.GeneralAttributes" type="XML"/>
+
+                        <!-- COLORS -->
+                        <core:Fragment fragmentName="zui3derp.view.subviews.styles.Colors" type="XML"/>
+
+                        <!-- SIZES -->
+                        <core:Fragment fragmentName="zui3derp.view.subviews.styles.Sizes" type="XML"/>
+
+                        <!-- PROCESSES -->
+                        <core:Fragment fragmentName="zui3derp.view.subviews.styles.Processes" type="XML"/>
+                        
+                    </IconTabFilter>
+
+                    <!-- VERSIONS -->
+                    <IconTabFilter icon="sap-icon://notes" text="{i18n>Versions}" tooltip="{i18n>Manageversions}">
+
+                        <!-- VERSIONS -->
+                        <core:Fragment fragmentName="zui3derp.view.subviews.styles.Versions" type="XML"/>                        
+                    </IconTabFilter>
+
+                    <!-- ATTACHMENTS -->
+                    <IconTabFilter icon="sap-icon://attachment" text="{i18n>Attachments}" tooltip="{i18n>Manageattachments}">
+                        <core:Fragment fragmentName="zui3derp.view.subviews.styles.Attachments" type="XML"/>  
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </Panel>
+        
+        <!-- <VBox height="200px"/> -->
+    </Page>
+</mvc:View>

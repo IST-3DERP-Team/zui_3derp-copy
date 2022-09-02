@@ -1,0 +1,21 @@
+{
+    "selectedKey": "RouteMain",
+    "navigation": [
+        {
+            "title": "Home",
+            "icon": "sap-icon://home",
+            "key": "RouteMain"
+        },
+        {
+            "title": "Manage Styles",
+            "icon": "sap-icon://puzzle",
+            "key": "RouteStyles"
+        }
+    ],
+    "fixedNavigation": [
+        {
+            "title": "Settings",
+            "icon": "sap-icon://employee"
+        }
+    ]
+}

@@ -1,0 +1,208 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" class="sapUiSizeCompact" xmlns:tnt="sap.tnt"
+    xmlns:c="zui3derp.control" xmlns:t="sap.ui.table">
+        <Panel id="headerPanel" expandable="true" expanded="true" width="auto" class="sapUiSizeCompact">
+
+            <headerToolbar>
+                <Toolbar id="TB1" height="3rem" style="Clear">
+                    <Title text="{i18n>Header}" />
+                    <ToolbarSpacer />
+                    <Button type="Ghost" icon="sap-icon://save" text="{i18n>Save}" tooltip="{i18n>Savestyleheader}" press="onSaveHeader" visible="{HeaderEditModeModel>/editMode}"/>
+                    <Button type="Ghost" icon="sap-icon://delete" text="{i18n>Deletestyle}" tooltip="{i18n>Deletestyleheader}" press="onDeleteStyle" visible="{HeaderEditModeModel>/editMode}"/>
+                    <Button type="Ghost" icon="sap-icon://edit" text="{i18n>Edit}" tooltip="{i18n>Editstyleheader}" press="setHeaderEditMode" visible="{= ${HeaderEditModeModel>/editMode} === true ? false : true }"/>
+                    <Button type="Ghost" icon="sap-icon://decline" text="{i18n>Cancel}" tooltip="{i18n>Canceledit}" press="cancelHeaderEdit" visible="{= ${HeaderEditModeModel>/editMode} === true ? true : false }"/>
+                </Toolbar>
+            </headerToolbar>
+
+            <MessageStrip id="HeaderMessageStrip" text="" showIcon="true" showCloseButton="true" class="sapUiMediumMarginBottom" type="Error" visible="false"/>
+            
+            <!-- Style Header Form -->
+            <f:Form id="StyleHeaderForm1" editable="false" class="sapUiNoContentPadding">
+                <f:layout>
+                    <f:ResponsiveGridLayout columnsXL="4" columnsL="3" columnsM="3"/>
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer ariaLabelledBy="Grp1" class="sapUiNoContentPadding" >
+                        <f:formElements>
+                            <f:FormElement label="{i18n>STYLECD}" visible="{= ${VisibleFieldsData>/STYLECD} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="STYLECD" value="{headerData>/Stylecd}" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required" 
+                                        change="onHeaderChange" liveChange="onHeaderChange">
+                                    </Input>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>DESC1}" visible="{= ${VisibleFieldsData>/DESC1} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="DESC1" value="{headerData>/Desc1}" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required" 
+                                        change="onHeaderChange" liveChange="onHeaderChange"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer ariaLabelledBy="Grp2">
+                        <f:formElements>
+                            <f:FormElement label="{i18n>SEASONCD}" visible="{= ${VisibleFieldsData>/SEASONCD} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="SEASONCD" type="Text" showSuggestion="true" showValueHelp="true" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required"
+                                        valueHelpRequest="onSeasonsValueHelp" suggestionItems="{SeasonsModel>/results}" value="{headerData>/Seasoncd}"
+                                        change="onHeaderChange" liveChange="onHeaderChange">
+                                        <suggestionItems>
+                                            <core:ListItem text="{SeasonsModel>Seasoncd}" additionalText="{SeasonsModel>Desc1}"/>
+                                        </suggestionItems>
+                                    </Input>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>FTYSTYLE}" visible="{= ${VisibleFieldsData>/FTYSTYLE} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="FTYSTYLE" value="{headerData>/Ftystyle}" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required" 
+                                        change="onHeaderChange" liveChange="onHeaderChange"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+            <f:Form id="StyleHeaderForm2" editable="true">
+                <f:layout>
+                    <f:ResponsiveGridLayout columnsXL="4" columnsL="3" columnsM="3" singleContainerFullSize="false" />  
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="{i18n>PRODTYP}" visible="{= ${VisibleFieldsData>/PRODTYP} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="PRODTYP" type="Text" showSuggestion="true" showValueHelp="true" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required"
+                                        valueHelpRequest="onProdTypeValueHelp" suggestionItems="{ProdTypeModel>/results}" value="{headerData>/Prodtyp}" 
+                                        change="onHeaderChange" liveChange="onHeaderChange">
+                                        <suggestionItems>
+                                            <core:ListItem text="{ProdTypeModel>ProdTyp}" additionalText="{ProdTypeModel>Desc1}"/>
+                                        </suggestionItems>
+                                    </Input>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>STYLECAT}" visible="{= ${VisibleFieldsData>/STYLECAT} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="STYLECAT" type="Text" showSuggestion="true" showValueHelp="true" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required"
+                                        valueHelpRequest="onStyleCatValueHelp" suggestionItems="{StyleCatModel>/results}" value="{headerData>/Stylecat}" 
+                                        change="onHeaderChange" liveChange="onHeaderChange">
+                                        <suggestionItems>
+                                            <core:ListItem text="{StyleCatModel>Stylcat}" additionalText="{StyleCatModel>Desc1}"/>
+                                        </suggestionItems>
+                                    </Input>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>CUSTPRDTYP}" visible="{= ${VisibleFieldsData>/CUSTPRDTYP} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="CUSTPRDTYP" value="{headerData>/Custprdtyp}" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required" 
+                                        change="onHeaderChange" liveChange="onHeaderChange"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="{i18n>SALESGRP}" visible="{= ${VisibleFieldsData>/SALESGRP} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="SALESGRP" type="Text" showSuggestion="true" showValueHelp="true" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required"
+                                        valueHelpRequest="onSalesGroupValueHelp" suggestionItems="{SalesGroupModel>/results}" value="{headerData>/Salesgrp}" 
+                                        change="onHeaderChange" liveChange="onHeaderChange">
+                                        <suggestionItems>
+                                            <core:ListItem text="{SalesGroupModel>SalesGrp}" additionalText="{SalesGroupModel>Desc1}"/>                                  </suggestionItems>
+                                    </Input>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>PRODGRP}" visible="{= ${VisibleFieldsData>/PRODGRP} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="PRODGRP" value="{headerData>/Prodgrp}" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required" 
+                                        change="onHeaderChange" liveChange="onHeaderChange"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>STYLEGRP}" visible="{= ${VisibleFieldsData>/STYLEGRP} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="STYLEGRP" value="{headerData>/Stylegrp}" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required" 
+                                        change="onHeaderChange" liveChange="onHeaderChange"/>
+                                </f:fields>
+                            </f:FormElement>
+                            
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer ariaLabelledBy="Grp3">
+                        <f:formElements>
+                            <f:FormElement label="{i18n>CUSTGRP}" visible="{= ${VisibleFieldsData>/CUSTGRP} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="CUSTGRP" type="Text" showSuggestion="true" showValueHelp="true" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required"
+                                        valueHelpRequest="onCustGroupValueHelp" suggestionItems="{CustGroupModel>/results}" value="{headerData>/Custgrp}" 
+                                        change="onHeaderChange" liveChange="onHeaderChange">
+                                        <suggestionItems>
+                                            <core:ListItem text="{CustGroupModel>CustGrp}" additionalText="{CustGroupModel>Desc1}"/>
+                                        </suggestionItems>
+                                    </Input>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>SOLDTOCUST}" visible="{= ${VisibleFieldsData>/SOLDTOCUST} === true ? true : false }">
+                                <Input id="SOLDTOCUST" type="Text" showSuggestion="true" showValueHelp="true" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required"
+                                    valueHelpRequest="onCustomersValueHelp" suggestionItems="{CustomersModel>/results}" value="{headerData>/Soldtocust}" 
+                                    change="onHeaderChange" liveChange="onHeaderChange">
+                                    <suggestionItems>
+                                        <core:ListItem text="{CustomersModel>Custno}" additionalText="{CustomersModel>Desc1}"/>
+                                    </suggestionItems>
+                                </Input>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>SIZEGRP}" visible="{= ${VisibleFieldsData>/SIZEGRP} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="SIZEGRP" type="Text" showSuggestion="true" showValueHelp="true" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required"
+                                        valueHelpRequest="onSizeGroupValueHelp" suggestionItems="{SizeGroupModel>/results}" value="{headerData>/Sizegrp}" 
+                                        change="onHeaderChange" liveChange="onHeaderChange">
+                                        <suggestionItems>
+                                            <core:ListItem text="{SizeGroupModel>AttribGrp}"/>
+                                        </suggestionItems>
+                                    </Input>
+                                </f:fields>
+                            </f:FormElement>
+                            
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer ariaLabelledBy="Grp4">
+                        <f:formElements>
+                            <f:FormElement label="{i18n>UOM}" visible="{= ${VisibleFieldsData>/UOM} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="UOM" type="Text" showSuggestion="true" showValueHelp="true" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required"
+                                        valueHelpRequest="onUomValueHelp" suggestionItems="{UOMModel>/results}" value="{headerData>/Uom}" 
+                                        change="onHeaderChange" liveChange="onHeaderChange">
+                                        <suggestionItems>
+                                            <core:ListItem text="{UOMModel>Valunit}" additionalText="{UOMModel>Desc1}"/>
+                                        </suggestionItems>
+                                    </Input>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>FABRICATION}" visible="{= ${VisibleFieldsData>/FABRICATION} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="FABRICATION" value="{headerData>/Fabrctn}" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required" 
+                                        change="onHeaderChange" liveChange="onHeaderChange"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+            <f:Form id="StyleHeaderForm3" editable="true">
+                <f:layout>
+                    <f:ResponsiveGridLayout columnsXL="4" columnsL="3" columnsM="3" singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="{i18n>REMARKS}" visible="{= ${VisibleFieldsData>/REMARKS} === true ? true : false }">
+                                <f:fields>
+                                    <Input id="REMARKS" value="{headerData>/Remarks}" editable="{HeaderEditModeModel>/editMode}" valueStateText="Required" 
+                                        change="onHeaderChange" liveChange="onHeaderChange"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                        <f:layoutData>
+                            <l:GridData span="XL8 L8 M8 S3" />
+                        </f:layoutData>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </Panel>
+</core:FragmentDefinition>

@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" class="sapUiSizeCompact" xmlns:tnt="sap.tnt"
+    xmlns:c="zui3derp.control" xmlns:t="sap.ui.table">
+    <Panel expandable="true" expanded="false" width="80%" class="sapUiSmallMargin sapUiSizeCompact">
+    
+        <headerToolbar>
+            <Toolbar height="3rem" style="Clear">
+                <Label text="{i18n>Sizes}" />
+            </Toolbar>
+        </headerToolbar>
+
+        <Toolbar height="3rem" style="Clear">
+            <ToolbarSpacer />
+            <Button type="Ghost" icon="sap-icon://save" text="{i18n>Save}" tooltip="{i18n>Savesizeattributes}" press="onSaveSizeTable" visible="{SizeEditModeModel>/editMode}" />
+            <Button type="Ghost" icon="sap-icon://edit" text="{i18n>Edit}" tooltip="{i18n>Editsizeattributes}" press="setSizeEditMode" visible="{= ${SizeEditModeModel>/editMode} === true ? false : true }"/>
+            <Button type="Ghost" icon="sap-icon://decline" text="{i18n>Cancel}" tooltip="{i18n>Canceledit}" press="cancelSizeEdit" visible="{= ${SizeEditModeModel>/editMode} === true ? true : false }"/>
+        </Toolbar>
+
+        <MessageStrip id="SizesMessageStrip" text="" showIcon="true" showCloseButton="true" class="sapUiMediumMarginBottom" type="Error" visible="false"/>
+
+        <!-- Sizes Table -->
+        <c:DynamicTable id="sizesTable" rows="{DataModel>/results}" enableColumnReordering="false" class="sapUiSizeCompact"
+            selectionMode="None">
+            <c:columns>
+                <t:Column width="11rem" filterProperty="Attribgrp">
+                    <Label text="{i18n>SizeRange}"/>
+                    <t:template>
+                        <Input value="{DataModel>Attribgrp}" editable="false"/>
+                    </t:template>
+                </t:Column>
+                <t:Column width="11rem" filterProperty="Attribcd">
+                    <Label text="{i18n>SizeCode}"/>
+                    <t:template>
+                        <Input value="{DataModel>Attribcd}" editable="false"/>
+                    </t:template>
+                </t:Column>
+                <t:Column width="11rem" sortProperty="Baseind">
+                    <Label text="{i18n>BaseInd}"/>
+                    <t:template>
+                        <CheckBox selected="{DataModel>Baseind}" editable="{SizeEditModeModel>/editMode}" select="onSizeChange"/>
+                    </t:template>
+                </t:Column>
+            </c:columns>
+        </c:DynamicTable>
+        
+    </Panel>
+
+</core:FragmentDefinition>

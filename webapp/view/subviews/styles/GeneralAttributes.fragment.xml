@@ -1,0 +1,81 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" class="sapUiSizeCompact" xmlns:tnt="sap.tnt"
+    xmlns:c="zui3derp.control" xmlns:t="sap.ui.table">
+    <Panel expandable="true" expanded="false" width="100%" class="sapUiSmallMargin sapUiSizeCompact">
+        <headerToolbar>
+            <Toolbar height="3rem" style="Clear">
+                <Label text="{i18n>GeneralAttributes}"/>
+            </Toolbar>
+        </headerToolbar>
+
+        <Toolbar height="3rem" style="Clear">
+            <ToolbarSpacer />
+            <Button type="Ghost" icon="sap-icon://save" text="{i18n>Save}" tooltip="{i18n>Saveattributes}" press="onSaveGeneralTable" visible="{GenAttrEditModeModel>/editMode}"/>
+            <Button type="Ghost" icon="sap-icon://add" tooltip="{i18n>Addnewline}" press="addLine" visible="{GenAttrEditModeModel>/editMode}">
+                <customData>
+                    <core:CustomData key="TableName" value="generalTable"/>
+                </customData>
+            </Button>
+            <Button type="Ghost" icon="sap-icon://delete" tooltip="{i18n>Deleteselectedattributes}" press="onDeleteGeneralAttr" visible="{GenAttrEditModeModel>/editMode}"/>
+            <Button type="Ghost" icon="sap-icon://edit" text="{i18n>Edit}" tooltip="{i18n>Editattributes}" press="setGeneralAttrEditMode" visible="{= ${GenAttrEditModeModel>/editMode} === true ? false : true }"/>
+            <Button type="Ghost" icon="sap-icon://decline" text="{i18n>Cancel}" tooltip="{i18n>Canceledit}" press="cancelGeneralAttrEdit" visible="{= ${GenAttrEditModeModel>/editMode} === true ? true : false }"/>
+        </Toolbar>
+
+        <VBox>
+
+            <MessageStrip id="GeneralAttrMessageStrip" text="" showIcon="true" showCloseButton="true" class="sapUiMediumMarginBottom" type="Error" visible="false"/>
+            
+            <!-- General Attributes Table -->
+            <ScrollContainer height="400px" vertical="true">
+                <c:DynamicTable id="generalTable" rows="{DataModel>/results}" enableColumnReordering="false" class="sapUiSizeCompact"
+                    selectionMode="{= ${GenAttrEditModeModel>/editMode} === true ? 'MultiToggle' : 'None' }" visibleRowCountMode="Fixed"
+                    width="100%">
+                    <c:columns>
+                        <t:Column width="8rem" filterProperty="Attribtyp">
+                            <Label text="{i18n>AttributeType}" />
+                            <t:template>
+                                <Input id="AttrTypesInput" type="Text" showSuggestion="true" showValueHelp="true" editable="{GenAttrEditModeModel>/editMode}" 
+                                    change="onGeneralAttrChange" liveChange="onGeneralAttrChange"
+                                    valueHelpRequest="onAttrTypesValueHelp" suggestionItems="{AttribTypeModel>/results}" value="{DataModel>Attribtyp}">
+                                    <suggestionItems>
+                                        <core:ListItem text="{AttribTypeModel>Attribtyp}" additionalText="{AttribTypeModel>Desc1}"/>
+                                    </suggestionItems>
+                                </Input>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem" filterProperty="Attribcd">
+                            <Label text="{i18n>AttributeCode}" />
+                            <t:template>
+                                <Input id="AttrCodesInput" type="Text" showSuggestion="true" showValueHelp="true" editable="{GenAttrEditModeModel>/editMode}" 
+                                    change="onGeneralAttrChange" liveChange="onGeneralAttrChange"
+                                    valueHelpRequest="onAttrCodesValueHelp" suggestionItems="{AttribCdModel>/results}" value="{DataModel>Attribcd}">
+                                    <suggestionItems>
+                                        <core:ListItem text="{AttribCdModel>Attribcd}" additionalText="{AttribCdModel>Desc1}"/>
+                                    </suggestionItems>
+                                </Input>
+                            </t:template>
+                        </t:Column>
+                        <t:Column name="DESC1" width="16rem" filterProperty="Desc1">
+                            <Label text="{i18n>Description}" />
+                            <t:template>
+                                <Text id="AttrCodeDesc" text="{DataModel>Desc1}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem" filterProperty="Attribval">
+                            <Label text="{i18n>Value}" />
+                            <t:template>
+                                <Input id="AttribValInput" type="Text" editable="{GenAttrEditModeModel>/editMode}" value="{DataModel>Attribval}" 
+                                    change="onGeneralAttrChange" liveChange="onGeneralAttrChange"></Input>
+                            </t:template>
+                        </t:Column>
+                        <t:Column name="UOM" width="5rem" filterProperty="Valunit">
+                            <Label text="{i18n>UOM}" />
+                            <t:template>
+                                <Text id="AttrValunit" text="{DataModel>Valunit}"/>
+                            </t:template>
+                        </t:Column>
+                    </c:columns>
+                </c:DynamicTable>
+            </ScrollContainer>
+        </VBox>
+    </Panel>
+</core:FragmentDefinition>
